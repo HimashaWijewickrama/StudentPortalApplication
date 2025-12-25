@@ -1,76 +1,57 @@
-﻿
-# Student Portal 
-
-The Student Portal is a CRUD-based web application developed using ASP.NET Core MVC, Entity Framework Core, and SQL Server.
-The application is designed to efficiently manage student-related data through a clean, user-friendly interface and a well-structured architecture.
-
-It supports full Create, Read, Update, and Delete (CRUD) operations with validation, pagination, filtering, and dynamic UI components.
-
+﻿# Student Portal Application
+The Student Portal is a CRUD web application developed using ASP.NET Core MVC, Entity Framework Core, and SQL Server. The application is designed to efficiently manage student details through a clean, user friendly interface and a well structured architecture.
+<br><br>
+It supports full Create, Read, Update, and Delete (CRUD) operations with validation, pagination, filtering, and dynamic UI components.<br><br>
 
 ## 🛠️ Technologies Used
-
-* ASP.NET Core
-* SQL Server
-* Razor Views
-
+* ASP.NET Core<br>
+* SQL Server<br>
+* Razor Views<br><br>
 
 ## 🧩 Application Features
-
 1. Manage student information efficiently
 2. Clean and user friendly UI
 3. Validation for input data
 4. Dynamic dropdowns in MVC views
-5. Pagination and filtering
-
+5. Pagination and filtering<br><br>
 
 ## 🗃️ Models
-
 The application includes the following core models:
-
+<br>
 * Student
 * StudentType
 * Faculty
 * Department
-
+<br>
 Each model is mapped to the database using **Entity Framework Core.**
-
+<br><br>
 
 ## ➕ CRUD Functionality
+The application provides complete CRUD operations for managing student records;<br>
 
-The application provides complete CRUD operations for managing student records;
-
-* **Create** – Add new student details
-* **Read** – View each and every student individual details. Plus, list all students records with pagination and filtering
-* **Update** – Modify existing student details
-* **Delete** – Remove details 
+* **Create** – Add new student details<br>
+* **Read** – View each and every individual details. Plus, list all students records with pagination and filtering<br>
+* **Update** – Modify existing student details<br>
+* **Delete** – Remove details <br><br>
 
 ## 🚀 Getting Started
+### Prerequisites<br>
+* ASP.NET SDK (ASP.NET Core)<br>
+* SQL Server<br>
+* Visual Studio 2022 IDE<br><br>
 
-
-### Prerequisites
-
-* ASP.NET SDK (ASP.NET Core)
-* SQL Server
-* Visual Studio 2022 IDE
-
-### Setup Instructions
-
-1. Clone the repository 
+### Setup Instructions<br>
+1. Clone the repository <br>
 ```bash
-git clone https://github.com/HimashaWijewickrama/StudentPortal.git
+git clone https://github.com/HimashaWijewickrama/StudentPortalApplication.git
 ```
+2. Open the solution in Visual Studio 2022<br>
+3. Configure the SQL Server connection string in appsettings.json<br>
+4. Run the application<br><br>
 
-2. Open the solution in Visual Studio 2022
-3. Configure the SQL Server connection string in appsettings.json
-4. Run the application
+## 📷 Snapshots<br>
+The app is still cooking behind the scenes! But exciting views and features will be shared here soon...<br><br>
 
-
-## 📷 Snapshots
-
-The app is still cooking behind the scenes! But exciting views and features will be shared here soon...
-
-
-## 🪄 What's Next ?
-
-Some nice surprises may appear in future
-Stay tuned...! 😜
+## 🪄 What's Next ?<br>
+Some nice surprises may appear in future<br>
+Stay tuned...! 😜<br>
