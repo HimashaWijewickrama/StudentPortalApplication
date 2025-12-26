@@ -1,0 +1,146 @@
+﻿@model StudentPortalApplication.ViewModels.StudentCreateUpdateViewModel
+
+@{
+    ViewData["Title"] = "Update Student";
+}
+
+<div class="container mt-1">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-2 border rounded">
+                    <div class="bg-primary text-white text-center py-3 rounded mb-4 shadow-sm">
+                        <h2 class="mb-0">Update Student Details</h2>
+                    </div>
+
+                    <form asp-action="Update" method="post">
+
+                        <!-- Hidden field to store the Student ID -->
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="row mb-3">
+                            <label asp-for="FullName" class="col-sm-3 col-form-label text-end"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="FullName" class="form-control" placeholder="Enter full name" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="Email" class="col-sm-3 col-form-label text-end"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="Email" class="form-control" placeholder="Enter email address" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="FacultyId" class="col-sm-3 col-form-label text-end"></label>
+                            <div class="col-sm-9">
+                                <select asp-for="FacultyId" asp-items="@(new SelectList(Model.Faculties, "Id", "Name"))" class="form-control" id="FacultyDropdown">
+                                    <option value="">Select Faculty</option>
+                                </select>
+                                <span asp-validation-for="FacultyId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="DepartmentId" class="col-sm-3 col-form-label text-end"></label>
+                            <div class="col-sm-9">
+                                <select asp-for="DepartmentId" asp-items="@(new SelectList(Model.Departments, "Id", "Name"))" class="form-control" id="DepartmentDropdown">
+                                    <option value="">Select Department</option>
+                                </select>
+                                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="RegistrationDate" class="col-sm-3 col-form-label text-end"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="RegistrationDate" class="form-control" type="date" />
+                                <span asp-validation-for="RegistrationDate" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="DateOfBirth" class="col-sm-3 col-form-label text-end"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="DateOfBirth" class="form-control" type="date" />
+                                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="StudentTypeId" class="col-sm-3 col-form-label text-end"></label>
+                            <div class="col-sm-9">
+                                <select asp-for="StudentTypeId" asp-items="@(new SelectList(Model.StudentTypes, "Id", "Name"))" class="form-control">
+                                    <option value="">Select Student Type</option>
+                                </select>
+                                <span asp-validation-for="StudentTypeId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label asp-for="Gender" class="col-sm-3 col-form-label text-end"></label>
+                            <div class="col-sm-9">
+                                <div class="form-check form-check-inline">
+                                    <input asp-for="Gender" type="radio" class="form-check-input" value="Male" />
+                                    <label class="form-check-label">Male</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input asp-for="Gender" type="radio" class="form-check-input" value="Female" />
+                                    <label class="form-check-label">Female</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input asp-for="Gender" type="radio" class="form-check-input" value="Other" />
+                                    <label class="form-check-label">Other</label>
+                                </div>
+                                <span asp-validation-for="Gender" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-success btn-lg me-3">Update</button>
+                            <a class="btn btn-primary btn-lg" asp-action="List">Back</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            function loadDepartments(facultyId, selectedDepartmentId) {
+                if (facultyId) {
+                    $.getJSON('@Url.Action("GetDepartments")', { facultyId: facultyId }, function (data) {
+                        var $departmentDropdown = $('#DepartmentDropdown');
+                        $departmentDropdown.empty();
+                        $departmentDropdown.append('<option value="">Select Department</option>');
+                        $.each(data, function (index, item) {
+                            var selected = item.id === selectedDepartmentId ? 'selected' : '';
+                            $departmentDropdown.append('<option value="' + item.id + '" ' + selected + '>' + item.name + '</option>');
+                        });
+                    });
+                } else {
+                    $('#DepartmentDropdown').empty().append('<option value="">Select Department</option>');
+                }
+            }
+
+            var facultyId = $('#FacultyDropdown').val();
+            var selectedDepartmentId = '@Model.DepartmentId';
+
+            if (facultyId) {
+                loadDepartments(parseInt(facultyId), parseInt(selectedDepartmentId));
+            }
+
+            $('#FacultyDropdown').change(function () {
+                var facId = $(this).val();
+                loadDepartments(parseInt(facId), null);
+            });
+        });
+    </script>
+}
