@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-﻿# Student Portal Application
-=======
 # Student Portal Application
->>>>>>> 5e4a1f3cfdc8315a5f5acaa5d0b1ceaac3ef0016
 The Student Portal is a CRUD web application developed using ASP.NET Core MVC, Entity Framework Core, and SQL Server. The application is designed to efficiently manage student details through a clean, user friendly interface and a well structured architecture.
 <br><br>
 It supports full Create, Read, Update, and Delete (CRUD) operations with validation, pagination, filtering, and dynamic UI components.<br><br>
