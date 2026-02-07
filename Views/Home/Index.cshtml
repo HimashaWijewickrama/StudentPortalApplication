@@ -1,8 +1,76 @@
-﻿@{
+﻿@model StudentPortalApplication.ViewModels.StudentListViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container my-5">
+    <!-- Hero Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-3 fw-bold mb-3">Welcome to Student Portal</h1>
+        <p class="lead text-muted">Manage your workforce with confidence and ease. Student Portal Application brings simplicity and power together.</p>
+    </div>
+
+    <!-- Feature Details Cards -->
+    <div class="row g-6 mb-5">
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-people-fill text-primary fs-1 mb-3"></i>
+                    <h5 class="card-title">Student Management</h5>
+                    <p class="card-text">Easily manage student records, track enrollment, and maintain comprehensive student data.</p>
+                    <a asp-controller="Student" asp-action="List" class="btn btn-outline-primary">View Students</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <i class="bi bi-person-plus-fill text-success fs-1 mb-3"></i>
+                    <h5 class="card-title">Quick Enrollment</h5>
+                    <p class="card-text">Add new students to the system with our streamlined registration process.</p>
+                    <a asp-controller="Student" asp-action="Create" class="btn btn-outline-success">Add Student</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Section -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card bg-primary text-white text-center">
+                <div class="card-body">
+                    <h2 class="display-4">@Model.Total</h2>
+                    <p class="mb-0">Total Students</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-success text-white text-center">
+                <div class="card-body">
+                    <h2 class="display-4">@Model.TotalFaculties</h2>
+                    <p class="mb-0">Total Faculties</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-warning text-white text-center">
+                <div class="card-body">
+                    <h2 class="display-4">@Model.TotalDepartments</h2>
+                    <p class="mb-0">Total Departments</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Call to Action -->
+    <div class="card bg-dark text-light">
+        <div class="card-body text-center py-5">
+            <h3 class="mb-3">Ready to get started?</h3>
+            <p class="text-muted mb-4">Start managing student records more efficiently today</p>
+            <a asp-controller="Student" asp-action="Create" class="btn btn-primary btn-lg me-2">Add Your First Student</a>
+            <a href="https://learn.microsoft.com/aspnet/core" class="btn btn-outline-light btn-lg" target="_blank">Learn More</a>
+        </div>
+    </div>
 </div>

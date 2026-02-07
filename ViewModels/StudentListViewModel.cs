@@ -12,6 +12,8 @@ namespace StudentPortalApplication.ViewModels
         public int PageSize { get; set; }
         public int PageNumber { get; set; }
         public int Total { get; set; }
+        public int TotalFaculties { get; set; }
+        public int TotalDepartments { get; set; }
         public List<Faculty>? Faculties { get; set; }
         public List<StudentType>? StudentTypes { get; set; }
     }
